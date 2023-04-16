@@ -7,8 +7,8 @@ class AvatarEditingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileDataBloc, ProfileDataState>(
-      // buildWhen: (previous, current) =>
-      //     previous.profileData.photo != current.profileData.photo,
+      buildWhen: (previous, current) =>
+          previous.profileData.photo != current.profileData.photo,
       builder: (context, state) {
         return Card(
           child: InkWell(
