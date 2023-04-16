@@ -1,5 +1,6 @@
 import 'package:graphql/client.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:petrov_hockey_academy_flutter/graphQL/secrets.dart';
 
 /// [GraphQLService] используется для отправки запросов и мутаций к API, и возвращает ответ.
 ///
@@ -7,9 +8,9 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 class GraphQLService {
   GraphQLService(this._token) {
     final _httpLink = HttpLink(
-      'API_URL',
+      apiUrl,
       defaultHeaders: {
-        'Api-Key': 'API_KEY',
+        'Api-Key': apiKey,
         'Authorization': 'Bearer $_token',
       },
     );
