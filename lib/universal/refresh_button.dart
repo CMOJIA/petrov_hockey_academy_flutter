@@ -1,7 +1,6 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:petrov_hockey_academy_flutter/graphQL/graphql_service.dart';
 
 /// Кнопка для попытки повторной загрузки
 class RefreshButton extends StatefulWidget {
@@ -73,10 +72,6 @@ class _RefreshButtonState extends State<RefreshButton>
           onTap: isPressed
               ? null
               : () {
-                  getIt.registerSingleton<GraphQLService>(
-                    GraphQLService(
-                        widget.authenticationRepository.currentUser.token),
-                  );
                   if (mounted)
                     setState(() {
                       _controller.forward(from: 0);

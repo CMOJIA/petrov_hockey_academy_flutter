@@ -29,7 +29,11 @@ class GraphQLService {
     String query, {
     required Map<String, dynamic> variables,
   }) async {
-    final options = QueryOptions(document: gql(query), variables: variables);
+    final options = QueryOptions(
+      document: gql(query),
+      variables: variables,
+      fetchPolicy: FetchPolicy.networkOnly,
+    );
 
     final result = await _client.query(options);
 
@@ -41,8 +45,11 @@ class GraphQLService {
     String mutation, {
     required Map<String, dynamic> variables,
   }) async {
-    final options =
-        MutationOptions(document: gql(mutation), variables: variables);
+    final options = MutationOptions(
+      document: gql(mutation),
+      variables: variables,
+      fetchPolicy: FetchPolicy.networkOnly,
+    );
 
     final result = await _client.mutate(options);
     return result;

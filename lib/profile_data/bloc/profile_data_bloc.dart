@@ -96,7 +96,7 @@ class ProfileDataBloc extends Bloc<ProfileDataEvent, ProfileDataState> {
     Emitter<ProfileDataState> emit,
   ) async {
     emit(state.copyWith(imageStatus: ImageStatus.inProgrerss));
-
+    print(state.pickedImageFile.photo!.path);
     // Преобразование в MultipartFile
     final myFile =
         await MultipartFile.fromPath('', state.pickedImageFile.photo!.path);
@@ -112,7 +112,9 @@ class ProfileDataBloc extends Bloc<ProfileDataEvent, ProfileDataState> {
       else {
         // Запрос на получение ссылки обновленнного аватара пользователя
         final avatar = await _profileDataRepository.getAvatar();
-
+        print((((avatar?['clientSpace'] as Map<String, dynamic>)['me']
+                as Map<String, dynamic>)['avatar']
+            as Map<String, dynamic>)['filename'] as String);
         if (avatar == null) {
           throw Exception();
         }

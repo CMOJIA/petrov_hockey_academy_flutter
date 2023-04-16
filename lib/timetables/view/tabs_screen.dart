@@ -123,7 +123,7 @@ class _TabsScreenState extends State<TabsScreen> {
     getIt.allowReassignment = true;
 
     getIt.registerSingleton<GraphQLService>(
-      GraphQLService(_authenticationRepository),
+      GraphQLService(_authenticationRepository.currentUser.token),
     );
 
     return BlocProvider(
