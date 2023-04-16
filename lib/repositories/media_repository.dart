@@ -34,7 +34,7 @@ class MediaRepository {
   }
 
   /// Отправка запроса на добавление  альбома
-  Future<bool?> addAlbum({
+  Future<int?> addAlbum({
     required String title,
     required String author,
     required int groupId,
@@ -50,6 +50,7 @@ class MediaRepository {
           'files': files,
         },
       );
+
       return response.data?['addAlbum'];
     } catch (_) {
       rethrow;

@@ -189,7 +189,7 @@ class MediaBloc extends Bloc<MediaEvent, MediaState> {
       );
 
       // Проверка на ошибку
-      if (response == false || response == null) {
+      if (response == null) {
         throw Exception();
       } else {
         // Ставлю заново загрузку списка медиа
@@ -279,13 +279,13 @@ class MediaBloc extends Bloc<MediaEvent, MediaState> {
   ) async {
     final connectivity = await getIt.getAsync<ConnectivityResult>();
 
-    if (state.status == MediaStatus.initial ||
-        state.status == MediaStatus.failure) {
+    if (state.status == MediaStatus.failure) {
       // Проверяю подключено ли устройство к интернету и
       // Если статус failure - изменяю на статус initial для отображения шиммера
       if ((connectivity == ConnectivityResult.mobile ||
               connectivity == ConnectivityResult.wifi) &&
           state.status == MediaStatus.failure) {
+        print('here');
         emit(
           state.copyWith(
             status: MediaStatus.initial,
@@ -295,23 +295,25 @@ class MediaBloc extends Bloc<MediaEvent, MediaState> {
     }
 
     try {
-      final albums =
-          await _mediaRepository.getAlbums(albumsPage: state.albumsPage);
+      if (state.status == MediaStatus.initial) {
+        final albums =
+            await _mediaRepository.getAlbums(albumsPage: state.albumsPage);
 
-      final videos =
-          await _mediaRepository.getVideos(videosPage: state.videosPage);
+        final videos =
+            await _mediaRepository.getVideos(videosPage: state.videosPage);
 
-      return emit(
-        state.copyWith(
-          status: MediaStatus.success,
-          albums: albums,
-          videos: videos,
-          albumsPage: state.albumsPage + 1,
-          videosPage: state.videosPage + 1,
-          hasReachedAlbumsMax: albums.length < 20,
-          hasReachedVideosMax: videos.length < 20,
-        ),
-      );
+        return emit(
+          state.copyWith(
+            status: MediaStatus.success,
+            albums: albums,
+            videos: videos,
+            albumsPage: state.albumsPage + 1,
+            videosPage: state.videosPage + 1,
+            hasReachedAlbumsMax: albums.length < 20,
+            hasReachedVideosMax: videos.length < 20,
+          ),
+        );
+      }
     } catch (_) {
       emit(state.copyWith(status: MediaStatus.failure));
     }
