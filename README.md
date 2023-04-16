@@ -21,7 +21,7 @@
 
 [bloc_concurrency](https://pub.dev/packages/bloc_concurrency)
 
-[firebase_messaging](hhttps://pub.dev/packages/firebase_messaging)
+[firebase_messaging](https://pub.dev/packages/firebase_messaging)
 
 [formz](https://pub.dev/packages/formz)
 
