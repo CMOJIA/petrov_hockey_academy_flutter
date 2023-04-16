@@ -1,3 +1,4 @@
+<img src="drawing.jpg" alt="drawing" width="200"/>
 
 # Petrov Hockey Academy App
 
