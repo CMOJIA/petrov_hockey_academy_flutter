@@ -134,6 +134,7 @@ class _EmailTextField extends StatelessWidget {
         child: TextField(
           autofocus: true,
           autocorrect: false,
+          textCapitalization: TextCapitalization.sentences,
           maxLength: 255,
           onChanged: (value) => context
               .read<ProfileDataBloc>()

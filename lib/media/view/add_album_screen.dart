@@ -144,6 +144,7 @@ class _AlbumTitleInput extends StatelessWidget {
                 context.read<MediaBloc>()
                   ..add(MediaAlbumTitleInputChanged(title));
               },
+              textCapitalization: TextCapitalization.sentences,
               maxLength: 255,
               cursorColor: Colors.white70,
               style: const TextStyle(

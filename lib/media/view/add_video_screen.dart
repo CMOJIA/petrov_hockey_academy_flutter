@@ -173,6 +173,7 @@ class _VideoTitleInput extends StatelessWidget {
             child: TextField(
               onChanged: (title) => context.read<MediaBloc>()
                 ..add(MediaVideoTitleInputChanged(title)),
+              textCapitalization: TextCapitalization.sentences,
               maxLength: 255,
               cursorColor: Colors.white70,
               style: const TextStyle(
@@ -231,6 +232,7 @@ class _UrlInput extends StatelessWidget {
             child: TextField(
               onChanged: (url) =>
                   context.read<MediaBloc>()..add(MediaUrlInputChanged(url)),
+              textCapitalization: TextCapitalization.sentences,
               maxLength: 255,
               cursorColor: Theme.of(context).scaffoldBackgroundColor,
               style: const TextStyle(

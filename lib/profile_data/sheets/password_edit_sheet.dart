@@ -150,6 +150,7 @@ class _ConfirmedPasswordTextField extends StatelessWidget {
           key: const Key(
             'passwordConfirmationInput_textField',
           ),
+          textCapitalization: TextCapitalization.sentences,
           maxLength: 255,
           obscureText: state.isVisibleConfirmationPassword,
           onChanged: (passwordConfirmation) => context
@@ -200,6 +201,7 @@ class _NewPasswordTextField extends StatelessWidget {
         height: 95,
         child: TextField(
           key: const Key('newPasswordInput_textField'),
+          textCapitalization: TextCapitalization.sentences,
           maxLength: 255,
           autofocus: true,
           obscureText: state.isVisibleNewPassword,
