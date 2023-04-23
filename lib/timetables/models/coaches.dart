@@ -19,7 +19,7 @@ class Coach extends Equatable {
 
   final String coachId;
 
-  final String photo;
+  final String? photo;
 
   final String path;
 
@@ -31,7 +31,7 @@ class Coach extends Equatable {
         middleName,
         lastName,
         coachId,
-        photo,
+        photo ?? '',
         path,
         position,
       ];

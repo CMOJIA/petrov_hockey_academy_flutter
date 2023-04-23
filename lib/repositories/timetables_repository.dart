@@ -178,7 +178,6 @@ class TimetableRepository {
         final coach = map['coach'] as Map<String, dynamic>;
 
         final attendance = map['attendance'] as List;
-
         return Individual(
           startDt: format.parse(map['start_dt'] as String),
           endDt: format.parse(map['end_dt'] as String),
@@ -191,7 +190,7 @@ class TimetableRepository {
             lastName: coach['last_name'] as String,
             middleName: coach['middle_name'] as String,
             path: coach['path'] as String,
-            photo: coach['photo'].toString(),
+            photo: coach['photo'] ?? null,
             position: coach['position'] as String,
           ),
           attendance: attendance.map((dynamic e) {

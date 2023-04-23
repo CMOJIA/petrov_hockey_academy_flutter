@@ -259,13 +259,11 @@ class _StatusScreenState extends State<StatusScreen> {
   /// В зависимости от выбранного фильтра будут подгружаться последующие альбомы или видео.
   void _onScroll() {
     if (scrollController.position.pixels ==
-            scrollController.position.maxScrollExtent &&
-        selectedFiltertList.contains('Альбомы')) {
-      context.read<MediaBloc>().add(MediaAlbumLoadedMore());
-    } else if (scrollController.position.pixels ==
-            scrollController.position.maxScrollExtent &&
-        selectedFiltertList.contains('Видео')) {
-      context.read<MediaBloc>().add(MediaVideoLoadedMore());
+        scrollController.position.maxScrollExtent) {
+      if (selectedFiltertList.contains('Альбомы'))
+        context.read<MediaBloc>().add(MediaAlbumLoadedMore());
+      if (selectedFiltertList.contains('Видео'))
+        context.read<MediaBloc>().add(MediaVideoLoadedMore());
     }
   }
 }

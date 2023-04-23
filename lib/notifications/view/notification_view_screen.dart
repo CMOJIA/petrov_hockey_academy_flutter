@@ -39,8 +39,6 @@ class NotificationViewScreen extends StatelessWidget {
               // к странице покупки абонементов
               if (_notification.type == 'Продление абонемента')
                 _ToSubscriptionPageButton()
-              else
-                const SizedBox()
             ],
           ),
         ),

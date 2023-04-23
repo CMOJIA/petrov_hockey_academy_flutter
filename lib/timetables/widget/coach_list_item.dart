@@ -126,7 +126,7 @@ class _CoachAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Прверка на наличие фото тренера
-    if (coach.photo == 'null')
+    if (coach.photo == null)
       return const CircleAvatar(
         radius: 27,
         foregroundImage: AssetImage(

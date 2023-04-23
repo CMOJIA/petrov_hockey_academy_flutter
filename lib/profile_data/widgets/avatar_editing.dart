@@ -26,22 +26,17 @@ class AvatarEditingButton extends StatelessWidget {
                     'Изменить аватар',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  if (state.profileData.photo == null)
-                    const CircleAvatar(
-                      radius: 24,
-                      backgroundColor: Colors.grey,
-                      foregroundImage: AssetImage(
-                        'assets/empty_avatar.png',
-                      ),
-                    )
-                  else
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor: Colors.transparent,
-                      foregroundImage: NetworkImage(
-                        'https://hb.bizmrg.com/st.test.petrovacademy.ru/avatars/${state.profileData.photo}',
-                      ),
-                    ),
+                  CircleAvatar(
+                    radius: 24,
+                    backgroundColor: Colors.grey,
+                    foregroundImage: state.profileData.photo == null
+                        ? AssetImage(
+                            'assets/empty_avatar.png',
+                          ) as ImageProvider
+                        : NetworkImage(
+                            'https://hb.bizmrg.com/st.test.petrovacademy.ru/avatars/${state.profileData.photo}',
+                          ),
+                  )
                 ],
               ),
             ),

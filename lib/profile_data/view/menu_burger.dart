@@ -45,8 +45,6 @@ class UserScreen extends StatelessWidget {
                   _ToMediaScreenButton(
                     groupId: state.groups.first.groupId,
                   )
-                else
-                  const SizedBox(),
               ],
             );
           case ProfileDataStatus.initial:
@@ -135,22 +133,17 @@ class _ToUserDataScreenButton extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      if (state.profileData.photo == null)
-                        CircleAvatar(
-                          radius: 28,
-                          backgroundColor: Theme.of(context).primaryColorDark,
-                          foregroundImage: const AssetImage(
-                            'assets/empty_avatar.png',
-                          ),
-                        )
-                      else
-                        CircleAvatar(
-                          radius: 28,
-                          backgroundColor: Theme.of(context).primaryColorDark,
-                          foregroundImage: NetworkImage(
-                            'https://hb.bizmrg.com/st.test.petrovacademy.ru/avatars/${state.profileData.photo}',
-                          ),
-                        ),
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundColor: Theme.of(context).primaryColorDark,
+                        foregroundImage: state.profileData.photo == null
+                            ? AssetImage(
+                                'assets/empty_avatar.png',
+                              ) as ImageProvider
+                            : NetworkImage(
+                                'https://hb.bizmrg.com/st.test.petrovacademy.ru/avatars/${state.profileData.photo}',
+                              ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Wrap(

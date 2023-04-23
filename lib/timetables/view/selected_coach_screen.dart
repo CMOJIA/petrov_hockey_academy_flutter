@@ -181,24 +181,22 @@ class _Individuals extends StatelessWidget {
             return IndividualsListItem(
               individual: individuals[index],
             );
-          } else {
+          } else if (index == individuals.length - 1 && _counter == 0) {
             // Проверка есть ли расписание на выбранную дату
-            if (index == individuals.length - 1 && _counter == 0) {
-              return Padding(
-                padding: EdgeInsets.only(
-                  top: _displaySize.height * 0.1,
-                  left: _displaySize.width * 0.05,
-                  right: _displaySize.width * 0.05,
-                ),
-                child: Text(
-                  'Расписание на выбранную дату не сформировано.',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              );
-            } else {
-              return const SizedBox();
-            }
+            return Padding(
+              padding: EdgeInsets.only(
+                top: _displaySize.height * 0.1,
+                left: _displaySize.width * 0.05,
+                right: _displaySize.width * 0.05,
+              ),
+              child: Text(
+                'Расписание на выбранную дату не сформировано.',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            );
+          } else {
+            return const SizedBox();
           }
         },
         itemCount: individuals.length,

@@ -135,8 +135,6 @@ class _AlbumInfo extends StatelessWidget {
                         softWrap: false,
                       ),
                     )
-                  else
-                    const SizedBox(),
                 ],
               ),
             ],

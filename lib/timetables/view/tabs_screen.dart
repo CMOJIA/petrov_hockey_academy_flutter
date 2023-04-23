@@ -315,7 +315,6 @@ class _LogOutButton extends StatelessWidget {
           TimetableScreen.filter = FilterOptions.free;
         },
       );
-    else
-      return const SizedBox();
+    return const SizedBox();
   }
 }

@@ -186,26 +186,24 @@ class _PaidTimetable extends StatelessWidget {
                     DateFormat.yMd().format(selectedDate)) {
                   _counter++;
                   return PaidListItem(trainingPaid: paid[index]);
-                } else {
+                } else if (index == paid.length - 1 && _counter == 0) {
                   // Проверка есть ли расписание на выбранную дату
-                  if (index == paid.length - 1 && _counter == 0) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        top: _displaySize.height * 0.1,
-                        left: _displaySize.width * 0.05,
-                        right: _displaySize.width * 0.05,
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      top: _displaySize.height * 0.1,
+                      left: _displaySize.width * 0.05,
+                      right: _displaySize.width * 0.05,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Расписание на выбранную дату не сформировано.',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
-                      child: Center(
-                        child: Text(
-                          'Расписание на выбранную дату не сформировано.',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                      ),
-                    );
-                  } else {
-                    return Container();
-                  }
+                    ),
+                  );
+                } else {
+                  return SizedBox();
                 }
               },
               itemCount: paid.length,
@@ -247,27 +245,25 @@ class _FreeTimetable extends StatelessWidget {
                     DateFormat.yMd().format(selectedDate)) {
                   _counter++;
                   return FreeListItem(trainingsFree: budget[index]);
-                } else {
+                } else if (index == budget.length - 1 && _counter == 0) {
                   // Проверка есть ли расписание на выбранную дату
-                  if (index == budget.length - 1 && _counter == 0) {
-                    return Padding(
-                      //заменить пиксели на mediaquery
-                      padding: EdgeInsets.only(
-                        top: _displaySize.height * 0.1,
-                        left: _displaySize.width * 0.05,
-                        right: _displaySize.width * 0.05,
+                  return Padding(
+                    //заменить пиксели на mediaquery
+                    padding: EdgeInsets.only(
+                      top: _displaySize.height * 0.1,
+                      left: _displaySize.width * 0.05,
+                      right: _displaySize.width * 0.05,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Расписание на выбранную дату не сформировано.',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
-                      child: Center(
-                        child: Text(
-                          'Расписание на выбранную дату не сформировано.',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                      ),
-                    );
-                  } else {
-                    return Container();
-                  }
+                    ),
+                  );
+                } else {
+                  return SizedBox();
                 }
               },
               itemCount: budget.length,

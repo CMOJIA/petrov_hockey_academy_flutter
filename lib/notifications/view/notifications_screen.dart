@@ -172,10 +172,9 @@ class _SuccessContent extends StatelessWidget {
             // На рефреш обновляю состояние стейта NotificationsBloc
             // до знаечния по умолчанию и загружаю уведомления снова
             onRefresh: () async {
-              context
-                  .read<NotificationsBloc>()
-                  .add(NotificationsStatusRefreshed());
-              context.read<NotificationsBloc>().add(NotificationsFetched());
+              context.read<NotificationsBloc>()
+                ..add(NotificationsStatusRefreshed())
+                ..add(NotificationsFetched());
             },
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
